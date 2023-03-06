@@ -1,0 +1,3383 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Prog
+Rule 1     Prog -> Dcls
+Rule 2     Prog -> Corpo
+Rule 3     Prog -> Dcls Corpo
+Rule 4     Dcls -> Dcl
+Rule 5     Dcls -> Dcl Dcls
+Rule 6     Dcl -> INT VAR
+Rule 7     Dcl -> INT VAR = NUM
+Rule 8     Dcl -> ARRAY ( VAR , NUM )
+Rule 9     Dcl -> MATRIZ ( VAR , NUM , NUM )
+Rule 10    Dcl -> Print
+Rule 11    Dcl -> Scan
+Rule 12    Corpo -> Prox
+Rule 13    Corpo -> Prox Corpo
+Rule 14    Prox -> { Stats }
+Rule 15    Stats -> Stat
+Rule 16    Stats -> Stats Stat
+Rule 17    Stat -> Atr
+Rule 18    Stat -> If
+Rule 19    Stat -> While
+Rule 20    Stat -> Scan
+Rule 21    Stat -> Print
+Rule 22    Atr -> VAR [ Exp ] = Exp
+Rule 23    Atr -> VAR [ Exp ] [ Exp ] = Exp
+Rule 24    Atr -> VAR = Exp
+Rule 25    If -> IF ( Cond ) { Stats }
+Rule 26    If -> IF ( Cond ) { Stats } ELSE { Stats }
+Rule 27    While -> WHILE ( Cond ) { Stats }
+Rule 28    Exp -> OpA
+Rule 29    Exp -> OpR
+Rule 30    Exp -> OpL
+Rule 31    Exp -> Term
+Rule 32    Cond -> OpL
+Rule 33    Cond -> OpR
+Rule 34    OpL -> & ( OpR , OpR )
+Rule 35    OpL -> ~ OpR
+Rule 36    OpL -> | ( OpR , OpR )
+Rule 37    OpR -> > ( Exp , Exp )
+Rule 38    OpR -> MAIORIG ( Exp , Exp )
+Rule 39    OpR -> < ( Exp , Exp )
+Rule 40    OpR -> MENORIG ( Exp , Exp )
+Rule 41    OpR -> IGUALDADE ( Exp , Exp )
+Rule 42    OpR -> DIFERENTE ( Exp , Exp )
+Rule 43    OpA -> + ( Exp , Exp )
+Rule 44    OpA -> - ( Exp , Exp )
+Rule 45    OpA -> * ( Exp , Exp )
+Rule 46    OpA -> / ( Exp , Exp )
+Rule 47    OpA -> % ( Exp , Exp )
+Rule 48    Term -> NUM
+Rule 49    Term -> VAR
+Rule 50    Term -> VAR [ Term ]
+Rule 51    Term -> VAR [ Term ] [ Term ]
+Rule 52    Scan -> SCAN ( VAR )
+Rule 53    Scan -> SCAN ( VAR [ NUM ] )
+Rule 54    Scan -> SCAN ( VAR [ NUM ] [ NUM ] )
+Rule 55    Print -> PRINTT ( TEXTO )
+Rule 56    Print -> PRINTV ( Term )
+
+Terminals, with rules where they appear
+
+%                    : 47
+&                    : 34
+(                    : 8 9 25 26 27 34 36 37 38 39 40 41 42 43 44 45 46 47 52 53 54 55 56
+)                    : 8 9 25 26 27 34 36 37 38 39 40 41 42 43 44 45 46 47 52 53 54 55 56
+*                    : 45
++                    : 43
+,                    : 8 9 9 34 36 37 38 39 40 41 42 43 44 45 46 47
+-                    : 44
+/                    : 46
+<                    : 39
+=                    : 7 22 23 24
+>                    : 37
+ARRAY                : 8
+DIFERENTE            : 42
+ELSE                 : 26
+IF                   : 25 26
+IGUALDADE            : 41
+INT                  : 6 7
+MAIORIG              : 38
+MATRIZ               : 9
+MENORIG              : 40
+NUM                  : 7 8 9 9 48 53 54 54
+PRINTT               : 55
+PRINTV               : 56
+SCAN                 : 52 53 54
+TEXTO                : 55
+VAR                  : 6 7 8 9 22 23 24 49 50 51 52 53 54
+WHILE                : 27
+[                    : 22 23 23 50 51 51 53 54 54
+]                    : 22 23 23 50 51 51 53 54 54
+error                : 
+{                    : 14 25 26 26 27
+|                    : 36
+}                    : 14 25 26 26 27
+~                    : 35
+
+Nonterminals, with rules where they appear
+
+Atr                  : 17
+Cond                 : 25 26 27
+Corpo                : 2 3 13
+Dcl                  : 4 5
+Dcls                 : 1 3 5
+Exp                  : 22 22 23 23 23 24 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47
+If                   : 18
+OpA                  : 28
+OpL                  : 30 32
+OpR                  : 29 33 34 34 35 36 36
+Print                : 10 21
+Prog                 : 0
+Prox                 : 12 13
+Scan                 : 11 20
+Stat                 : 15 16
+Stats                : 14 16 25 26 26 27
+Term                 : 31 50 51 51 56
+While                : 19
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Prog
+    (1) Prog -> . Dcls
+    (2) Prog -> . Corpo
+    (3) Prog -> . Dcls Corpo
+    (4) Dcls -> . Dcl
+    (5) Dcls -> . Dcl Dcls
+    (12) Corpo -> . Prox
+    (13) Corpo -> . Prox Corpo
+    (6) Dcl -> . INT VAR
+    (7) Dcl -> . INT VAR = NUM
+    (8) Dcl -> . ARRAY ( VAR , NUM )
+    (9) Dcl -> . MATRIZ ( VAR , NUM , NUM )
+    (10) Dcl -> . Print
+    (11) Dcl -> . Scan
+    (14) Prox -> . { Stats }
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+
+    INT             shift and go to state 6
+    ARRAY           shift and go to state 7
+    MATRIZ          shift and go to state 8
+    {               shift and go to state 11
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+    SCAN            shift and go to state 14
+
+    Prog                           shift and go to state 1
+    Dcls                           shift and go to state 2
+    Corpo                          shift and go to state 3
+    Dcl                            shift and go to state 4
+    Prox                           shift and go to state 5
+    Print                          shift and go to state 9
+    Scan                           shift and go to state 10
+
+state 1
+
+    (0) S' -> Prog .
+
+
+
+state 2
+
+    (1) Prog -> Dcls .
+    (3) Prog -> Dcls . Corpo
+    (12) Corpo -> . Prox
+    (13) Corpo -> . Prox Corpo
+    (14) Prox -> . { Stats }
+
+    $end            reduce using rule 1 (Prog -> Dcls .)
+    {               shift and go to state 11
+
+    Corpo                          shift and go to state 15
+    Prox                           shift and go to state 5
+
+state 3
+
+    (2) Prog -> Corpo .
+
+    $end            reduce using rule 2 (Prog -> Corpo .)
+
+
+state 4
+
+    (4) Dcls -> Dcl .
+    (5) Dcls -> Dcl . Dcls
+    (4) Dcls -> . Dcl
+    (5) Dcls -> . Dcl Dcls
+    (6) Dcl -> . INT VAR
+    (7) Dcl -> . INT VAR = NUM
+    (8) Dcl -> . ARRAY ( VAR , NUM )
+    (9) Dcl -> . MATRIZ ( VAR , NUM , NUM )
+    (10) Dcl -> . Print
+    (11) Dcl -> . Scan
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+
+    {               reduce using rule 4 (Dcls -> Dcl .)
+    $end            reduce using rule 4 (Dcls -> Dcl .)
+    INT             shift and go to state 6
+    ARRAY           shift and go to state 7
+    MATRIZ          shift and go to state 8
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+    SCAN            shift and go to state 14
+
+    Dcl                            shift and go to state 4
+    Dcls                           shift and go to state 16
+    Print                          shift and go to state 9
+    Scan                           shift and go to state 10
+
+state 5
+
+    (12) Corpo -> Prox .
+    (13) Corpo -> Prox . Corpo
+    (12) Corpo -> . Prox
+    (13) Corpo -> . Prox Corpo
+    (14) Prox -> . { Stats }
+
+    $end            reduce using rule 12 (Corpo -> Prox .)
+    {               shift and go to state 11
+
+    Prox                           shift and go to state 5
+    Corpo                          shift and go to state 17
+
+state 6
+
+    (6) Dcl -> INT . VAR
+    (7) Dcl -> INT . VAR = NUM
+
+    VAR             shift and go to state 18
+
+
+state 7
+
+    (8) Dcl -> ARRAY . ( VAR , NUM )
+
+    (               shift and go to state 19
+
+
+state 8
+
+    (9) Dcl -> MATRIZ . ( VAR , NUM , NUM )
+
+    (               shift and go to state 20
+
+
+state 9
+
+    (10) Dcl -> Print .
+
+    INT             reduce using rule 10 (Dcl -> Print .)
+    ARRAY           reduce using rule 10 (Dcl -> Print .)
+    MATRIZ          reduce using rule 10 (Dcl -> Print .)
+    PRINTT          reduce using rule 10 (Dcl -> Print .)
+    PRINTV          reduce using rule 10 (Dcl -> Print .)
+    SCAN            reduce using rule 10 (Dcl -> Print .)
+    {               reduce using rule 10 (Dcl -> Print .)
+    $end            reduce using rule 10 (Dcl -> Print .)
+
+
+state 10
+
+    (11) Dcl -> Scan .
+
+    INT             reduce using rule 11 (Dcl -> Scan .)
+    ARRAY           reduce using rule 11 (Dcl -> Scan .)
+    MATRIZ          reduce using rule 11 (Dcl -> Scan .)
+    PRINTT          reduce using rule 11 (Dcl -> Scan .)
+    PRINTV          reduce using rule 11 (Dcl -> Scan .)
+    SCAN            reduce using rule 11 (Dcl -> Scan .)
+    {               reduce using rule 11 (Dcl -> Scan .)
+    $end            reduce using rule 11 (Dcl -> Scan .)
+
+
+state 11
+
+    (14) Prox -> { . Stats }
+    (15) Stats -> . Stat
+    (16) Stats -> . Stats Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stats                          shift and go to state 21
+    Stat                           shift and go to state 22
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 12
+
+    (55) Print -> PRINTT . ( TEXTO )
+
+    (               shift and go to state 31
+
+
+state 13
+
+    (56) Print -> PRINTV . ( Term )
+
+    (               shift and go to state 32
+
+
+state 14
+
+    (52) Scan -> SCAN . ( VAR )
+    (53) Scan -> SCAN . ( VAR [ NUM ] )
+    (54) Scan -> SCAN . ( VAR [ NUM ] [ NUM ] )
+
+    (               shift and go to state 33
+
+
+state 15
+
+    (3) Prog -> Dcls Corpo .
+
+    $end            reduce using rule 3 (Prog -> Dcls Corpo .)
+
+
+state 16
+
+    (5) Dcls -> Dcl Dcls .
+
+    {               reduce using rule 5 (Dcls -> Dcl Dcls .)
+    $end            reduce using rule 5 (Dcls -> Dcl Dcls .)
+
+
+state 17
+
+    (13) Corpo -> Prox Corpo .
+
+    $end            reduce using rule 13 (Corpo -> Prox Corpo .)
+
+
+state 18
+
+    (6) Dcl -> INT VAR .
+    (7) Dcl -> INT VAR . = NUM
+
+    INT             reduce using rule 6 (Dcl -> INT VAR .)
+    ARRAY           reduce using rule 6 (Dcl -> INT VAR .)
+    MATRIZ          reduce using rule 6 (Dcl -> INT VAR .)
+    PRINTT          reduce using rule 6 (Dcl -> INT VAR .)
+    PRINTV          reduce using rule 6 (Dcl -> INT VAR .)
+    SCAN            reduce using rule 6 (Dcl -> INT VAR .)
+    {               reduce using rule 6 (Dcl -> INT VAR .)
+    $end            reduce using rule 6 (Dcl -> INT VAR .)
+    =               shift and go to state 34
+
+
+state 19
+
+    (8) Dcl -> ARRAY ( . VAR , NUM )
+
+    VAR             shift and go to state 35
+
+
+state 20
+
+    (9) Dcl -> MATRIZ ( . VAR , NUM , NUM )
+
+    VAR             shift and go to state 36
+
+
+state 21
+
+    (14) Prox -> { Stats . }
+    (16) Stats -> Stats . Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    }               shift and go to state 37
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stat                           shift and go to state 38
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 22
+
+    (15) Stats -> Stat .
+
+    }               reduce using rule 15 (Stats -> Stat .)
+    VAR             reduce using rule 15 (Stats -> Stat .)
+    IF              reduce using rule 15 (Stats -> Stat .)
+    WHILE           reduce using rule 15 (Stats -> Stat .)
+    SCAN            reduce using rule 15 (Stats -> Stat .)
+    PRINTT          reduce using rule 15 (Stats -> Stat .)
+    PRINTV          reduce using rule 15 (Stats -> Stat .)
+
+
+state 23
+
+    (17) Stat -> Atr .
+
+    }               reduce using rule 17 (Stat -> Atr .)
+    VAR             reduce using rule 17 (Stat -> Atr .)
+    IF              reduce using rule 17 (Stat -> Atr .)
+    WHILE           reduce using rule 17 (Stat -> Atr .)
+    SCAN            reduce using rule 17 (Stat -> Atr .)
+    PRINTT          reduce using rule 17 (Stat -> Atr .)
+    PRINTV          reduce using rule 17 (Stat -> Atr .)
+
+
+state 24
+
+    (18) Stat -> If .
+
+    }               reduce using rule 18 (Stat -> If .)
+    VAR             reduce using rule 18 (Stat -> If .)
+    IF              reduce using rule 18 (Stat -> If .)
+    WHILE           reduce using rule 18 (Stat -> If .)
+    SCAN            reduce using rule 18 (Stat -> If .)
+    PRINTT          reduce using rule 18 (Stat -> If .)
+    PRINTV          reduce using rule 18 (Stat -> If .)
+
+
+state 25
+
+    (19) Stat -> While .
+
+    }               reduce using rule 19 (Stat -> While .)
+    VAR             reduce using rule 19 (Stat -> While .)
+    IF              reduce using rule 19 (Stat -> While .)
+    WHILE           reduce using rule 19 (Stat -> While .)
+    SCAN            reduce using rule 19 (Stat -> While .)
+    PRINTT          reduce using rule 19 (Stat -> While .)
+    PRINTV          reduce using rule 19 (Stat -> While .)
+
+
+state 26
+
+    (20) Stat -> Scan .
+
+    }               reduce using rule 20 (Stat -> Scan .)
+    VAR             reduce using rule 20 (Stat -> Scan .)
+    IF              reduce using rule 20 (Stat -> Scan .)
+    WHILE           reduce using rule 20 (Stat -> Scan .)
+    SCAN            reduce using rule 20 (Stat -> Scan .)
+    PRINTT          reduce using rule 20 (Stat -> Scan .)
+    PRINTV          reduce using rule 20 (Stat -> Scan .)
+
+
+state 27
+
+    (21) Stat -> Print .
+
+    }               reduce using rule 21 (Stat -> Print .)
+    VAR             reduce using rule 21 (Stat -> Print .)
+    IF              reduce using rule 21 (Stat -> Print .)
+    WHILE           reduce using rule 21 (Stat -> Print .)
+    SCAN            reduce using rule 21 (Stat -> Print .)
+    PRINTT          reduce using rule 21 (Stat -> Print .)
+    PRINTV          reduce using rule 21 (Stat -> Print .)
+
+
+state 28
+
+    (22) Atr -> VAR . [ Exp ] = Exp
+    (23) Atr -> VAR . [ Exp ] [ Exp ] = Exp
+    (24) Atr -> VAR . = Exp
+
+    [               shift and go to state 39
+    =               shift and go to state 40
+
+
+state 29
+
+    (25) If -> IF . ( Cond ) { Stats }
+    (26) If -> IF . ( Cond ) { Stats } ELSE { Stats }
+
+    (               shift and go to state 41
+
+
+state 30
+
+    (27) While -> WHILE . ( Cond ) { Stats }
+
+    (               shift and go to state 42
+
+
+state 31
+
+    (55) Print -> PRINTT ( . TEXTO )
+
+    TEXTO           shift and go to state 43
+
+
+state 32
+
+    (56) Print -> PRINTV ( . Term )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Term                           shift and go to state 44
+
+state 33
+
+    (52) Scan -> SCAN ( . VAR )
+    (53) Scan -> SCAN ( . VAR [ NUM ] )
+    (54) Scan -> SCAN ( . VAR [ NUM ] [ NUM ] )
+
+    VAR             shift and go to state 47
+
+
+state 34
+
+    (7) Dcl -> INT VAR = . NUM
+
+    NUM             shift and go to state 48
+
+
+state 35
+
+    (8) Dcl -> ARRAY ( VAR . , NUM )
+
+    ,               shift and go to state 49
+
+
+state 36
+
+    (9) Dcl -> MATRIZ ( VAR . , NUM , NUM )
+
+    ,               shift and go to state 50
+
+
+state 37
+
+    (14) Prox -> { Stats } .
+
+    {               reduce using rule 14 (Prox -> { Stats } .)
+    $end            reduce using rule 14 (Prox -> { Stats } .)
+
+
+state 38
+
+    (16) Stats -> Stats Stat .
+
+    }               reduce using rule 16 (Stats -> Stats Stat .)
+    VAR             reduce using rule 16 (Stats -> Stats Stat .)
+    IF              reduce using rule 16 (Stats -> Stats Stat .)
+    WHILE           reduce using rule 16 (Stats -> Stats Stat .)
+    SCAN            reduce using rule 16 (Stats -> Stats Stat .)
+    PRINTT          reduce using rule 16 (Stats -> Stats Stat .)
+    PRINTV          reduce using rule 16 (Stats -> Stats Stat .)
+
+
+state 39
+
+    (22) Atr -> VAR [ . Exp ] = Exp
+    (23) Atr -> VAR [ . Exp ] [ Exp ] = Exp
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 51
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 40
+
+    (24) Atr -> VAR = . Exp
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 70
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 41
+
+    (25) If -> IF ( . Cond ) { Stats }
+    (26) If -> IF ( . Cond ) { Stats } ELSE { Stats }
+    (32) Cond -> . OpL
+    (33) Cond -> . OpR
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    Cond                           shift and go to state 71
+    OpL                            shift and go to state 72
+    OpR                            shift and go to state 73
+
+state 42
+
+    (27) While -> WHILE ( . Cond ) { Stats }
+    (32) Cond -> . OpL
+    (33) Cond -> . OpR
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    Cond                           shift and go to state 74
+    OpL                            shift and go to state 72
+    OpR                            shift and go to state 73
+
+state 43
+
+    (55) Print -> PRINTT ( TEXTO . )
+
+    )               shift and go to state 75
+
+
+state 44
+
+    (56) Print -> PRINTV ( Term . )
+
+    )               shift and go to state 76
+
+
+state 45
+
+    (48) Term -> NUM .
+
+    )               reduce using rule 48 (Term -> NUM .)
+    ]               reduce using rule 48 (Term -> NUM .)
+    }               reduce using rule 48 (Term -> NUM .)
+    VAR             reduce using rule 48 (Term -> NUM .)
+    IF              reduce using rule 48 (Term -> NUM .)
+    WHILE           reduce using rule 48 (Term -> NUM .)
+    SCAN            reduce using rule 48 (Term -> NUM .)
+    PRINTT          reduce using rule 48 (Term -> NUM .)
+    PRINTV          reduce using rule 48 (Term -> NUM .)
+    ,               reduce using rule 48 (Term -> NUM .)
+
+
+state 46
+
+    (49) Term -> VAR .
+    (50) Term -> VAR . [ Term ]
+    (51) Term -> VAR . [ Term ] [ Term ]
+
+    )               reduce using rule 49 (Term -> VAR .)
+    ]               reduce using rule 49 (Term -> VAR .)
+    }               reduce using rule 49 (Term -> VAR .)
+    VAR             reduce using rule 49 (Term -> VAR .)
+    IF              reduce using rule 49 (Term -> VAR .)
+    WHILE           reduce using rule 49 (Term -> VAR .)
+    SCAN            reduce using rule 49 (Term -> VAR .)
+    PRINTT          reduce using rule 49 (Term -> VAR .)
+    PRINTV          reduce using rule 49 (Term -> VAR .)
+    ,               reduce using rule 49 (Term -> VAR .)
+    [               shift and go to state 77
+
+
+state 47
+
+    (52) Scan -> SCAN ( VAR . )
+    (53) Scan -> SCAN ( VAR . [ NUM ] )
+    (54) Scan -> SCAN ( VAR . [ NUM ] [ NUM ] )
+
+    )               shift and go to state 78
+    [               shift and go to state 79
+
+
+state 48
+
+    (7) Dcl -> INT VAR = NUM .
+
+    INT             reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    ARRAY           reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    MATRIZ          reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    PRINTT          reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    PRINTV          reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    SCAN            reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    {               reduce using rule 7 (Dcl -> INT VAR = NUM .)
+    $end            reduce using rule 7 (Dcl -> INT VAR = NUM .)
+
+
+state 49
+
+    (8) Dcl -> ARRAY ( VAR , . NUM )
+
+    NUM             shift and go to state 80
+
+
+state 50
+
+    (9) Dcl -> MATRIZ ( VAR , . NUM , NUM )
+
+    NUM             shift and go to state 81
+
+
+state 51
+
+    (22) Atr -> VAR [ Exp . ] = Exp
+    (23) Atr -> VAR [ Exp . ] [ Exp ] = Exp
+
+    ]               shift and go to state 82
+
+
+state 52
+
+    (28) Exp -> OpA .
+
+    ]               reduce using rule 28 (Exp -> OpA .)
+    }               reduce using rule 28 (Exp -> OpA .)
+    VAR             reduce using rule 28 (Exp -> OpA .)
+    IF              reduce using rule 28 (Exp -> OpA .)
+    WHILE           reduce using rule 28 (Exp -> OpA .)
+    SCAN            reduce using rule 28 (Exp -> OpA .)
+    PRINTT          reduce using rule 28 (Exp -> OpA .)
+    PRINTV          reduce using rule 28 (Exp -> OpA .)
+    ,               reduce using rule 28 (Exp -> OpA .)
+    )               reduce using rule 28 (Exp -> OpA .)
+
+
+state 53
+
+    (29) Exp -> OpR .
+
+    ]               reduce using rule 29 (Exp -> OpR .)
+    }               reduce using rule 29 (Exp -> OpR .)
+    VAR             reduce using rule 29 (Exp -> OpR .)
+    IF              reduce using rule 29 (Exp -> OpR .)
+    WHILE           reduce using rule 29 (Exp -> OpR .)
+    SCAN            reduce using rule 29 (Exp -> OpR .)
+    PRINTT          reduce using rule 29 (Exp -> OpR .)
+    PRINTV          reduce using rule 29 (Exp -> OpR .)
+    ,               reduce using rule 29 (Exp -> OpR .)
+    )               reduce using rule 29 (Exp -> OpR .)
+
+
+state 54
+
+    (30) Exp -> OpL .
+
+    ]               reduce using rule 30 (Exp -> OpL .)
+    }               reduce using rule 30 (Exp -> OpL .)
+    VAR             reduce using rule 30 (Exp -> OpL .)
+    IF              reduce using rule 30 (Exp -> OpL .)
+    WHILE           reduce using rule 30 (Exp -> OpL .)
+    SCAN            reduce using rule 30 (Exp -> OpL .)
+    PRINTT          reduce using rule 30 (Exp -> OpL .)
+    PRINTV          reduce using rule 30 (Exp -> OpL .)
+    ,               reduce using rule 30 (Exp -> OpL .)
+    )               reduce using rule 30 (Exp -> OpL .)
+
+
+state 55
+
+    (31) Exp -> Term .
+
+    ]               reduce using rule 31 (Exp -> Term .)
+    }               reduce using rule 31 (Exp -> Term .)
+    VAR             reduce using rule 31 (Exp -> Term .)
+    IF              reduce using rule 31 (Exp -> Term .)
+    WHILE           reduce using rule 31 (Exp -> Term .)
+    SCAN            reduce using rule 31 (Exp -> Term .)
+    PRINTT          reduce using rule 31 (Exp -> Term .)
+    PRINTV          reduce using rule 31 (Exp -> Term .)
+    ,               reduce using rule 31 (Exp -> Term .)
+    )               reduce using rule 31 (Exp -> Term .)
+
+
+state 56
+
+    (43) OpA -> + . ( Exp , Exp )
+
+    (               shift and go to state 83
+
+
+state 57
+
+    (44) OpA -> - . ( Exp , Exp )
+
+    (               shift and go to state 84
+
+
+state 58
+
+    (45) OpA -> * . ( Exp , Exp )
+
+    (               shift and go to state 85
+
+
+state 59
+
+    (46) OpA -> / . ( Exp , Exp )
+
+    (               shift and go to state 86
+
+
+state 60
+
+    (47) OpA -> % . ( Exp , Exp )
+
+    (               shift and go to state 87
+
+
+state 61
+
+    (37) OpR -> > . ( Exp , Exp )
+
+    (               shift and go to state 88
+
+
+state 62
+
+    (38) OpR -> MAIORIG . ( Exp , Exp )
+
+    (               shift and go to state 89
+
+
+state 63
+
+    (39) OpR -> < . ( Exp , Exp )
+
+    (               shift and go to state 90
+
+
+state 64
+
+    (40) OpR -> MENORIG . ( Exp , Exp )
+
+    (               shift and go to state 91
+
+
+state 65
+
+    (41) OpR -> IGUALDADE . ( Exp , Exp )
+
+    (               shift and go to state 92
+
+
+state 66
+
+    (42) OpR -> DIFERENTE . ( Exp , Exp )
+
+    (               shift and go to state 93
+
+
+state 67
+
+    (34) OpL -> & . ( OpR , OpR )
+
+    (               shift and go to state 94
+
+
+state 68
+
+    (35) OpL -> ~ . OpR
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    OpR                            shift and go to state 95
+
+state 69
+
+    (36) OpL -> | . ( OpR , OpR )
+
+    (               shift and go to state 96
+
+
+state 70
+
+    (24) Atr -> VAR = Exp .
+
+    }               reduce using rule 24 (Atr -> VAR = Exp .)
+    VAR             reduce using rule 24 (Atr -> VAR = Exp .)
+    IF              reduce using rule 24 (Atr -> VAR = Exp .)
+    WHILE           reduce using rule 24 (Atr -> VAR = Exp .)
+    SCAN            reduce using rule 24 (Atr -> VAR = Exp .)
+    PRINTT          reduce using rule 24 (Atr -> VAR = Exp .)
+    PRINTV          reduce using rule 24 (Atr -> VAR = Exp .)
+
+
+state 71
+
+    (25) If -> IF ( Cond . ) { Stats }
+    (26) If -> IF ( Cond . ) { Stats } ELSE { Stats }
+
+    )               shift and go to state 97
+
+
+state 72
+
+    (32) Cond -> OpL .
+
+    )               reduce using rule 32 (Cond -> OpL .)
+
+
+state 73
+
+    (33) Cond -> OpR .
+
+    )               reduce using rule 33 (Cond -> OpR .)
+
+
+state 74
+
+    (27) While -> WHILE ( Cond . ) { Stats }
+
+    )               shift and go to state 98
+
+
+state 75
+
+    (55) Print -> PRINTT ( TEXTO ) .
+
+    INT             reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    ARRAY           reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    MATRIZ          reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    PRINTT          reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    PRINTV          reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    SCAN            reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    {               reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    $end            reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    }               reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    VAR             reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    IF              reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+    WHILE           reduce using rule 55 (Print -> PRINTT ( TEXTO ) .)
+
+
+state 76
+
+    (56) Print -> PRINTV ( Term ) .
+
+    INT             reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    ARRAY           reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    MATRIZ          reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    PRINTT          reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    PRINTV          reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    SCAN            reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    {               reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    $end            reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    }               reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    VAR             reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    IF              reduce using rule 56 (Print -> PRINTV ( Term ) .)
+    WHILE           reduce using rule 56 (Print -> PRINTV ( Term ) .)
+
+
+state 77
+
+    (50) Term -> VAR [ . Term ]
+    (51) Term -> VAR [ . Term ] [ Term ]
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Term                           shift and go to state 99
+
+state 78
+
+    (52) Scan -> SCAN ( VAR ) .
+
+    INT             reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    ARRAY           reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    MATRIZ          reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    PRINTT          reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    PRINTV          reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    SCAN            reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    {               reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    $end            reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    }               reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    VAR             reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    IF              reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+    WHILE           reduce using rule 52 (Scan -> SCAN ( VAR ) .)
+
+
+state 79
+
+    (53) Scan -> SCAN ( VAR [ . NUM ] )
+    (54) Scan -> SCAN ( VAR [ . NUM ] [ NUM ] )
+
+    NUM             shift and go to state 100
+
+
+state 80
+
+    (8) Dcl -> ARRAY ( VAR , NUM . )
+
+    )               shift and go to state 101
+
+
+state 81
+
+    (9) Dcl -> MATRIZ ( VAR , NUM . , NUM )
+
+    ,               shift and go to state 102
+
+
+state 82
+
+    (22) Atr -> VAR [ Exp ] . = Exp
+    (23) Atr -> VAR [ Exp ] . [ Exp ] = Exp
+
+    =               shift and go to state 104
+    [               shift and go to state 103
+
+
+state 83
+
+    (43) OpA -> + ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 105
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 84
+
+    (44) OpA -> - ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 106
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 85
+
+    (45) OpA -> * ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 107
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 86
+
+    (46) OpA -> / ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 108
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 87
+
+    (47) OpA -> % ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 109
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 88
+
+    (37) OpR -> > ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 110
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 89
+
+    (38) OpR -> MAIORIG ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 111
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 90
+
+    (39) OpR -> < ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 112
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 91
+
+    (40) OpR -> MENORIG ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 113
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 92
+
+    (41) OpR -> IGUALDADE ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 114
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 93
+
+    (42) OpR -> DIFERENTE ( . Exp , Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 115
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 94
+
+    (34) OpL -> & ( . OpR , OpR )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    OpR                            shift and go to state 116
+
+state 95
+
+    (35) OpL -> ~ OpR .
+
+    ]               reduce using rule 35 (OpL -> ~ OpR .)
+    }               reduce using rule 35 (OpL -> ~ OpR .)
+    VAR             reduce using rule 35 (OpL -> ~ OpR .)
+    IF              reduce using rule 35 (OpL -> ~ OpR .)
+    WHILE           reduce using rule 35 (OpL -> ~ OpR .)
+    SCAN            reduce using rule 35 (OpL -> ~ OpR .)
+    PRINTT          reduce using rule 35 (OpL -> ~ OpR .)
+    PRINTV          reduce using rule 35 (OpL -> ~ OpR .)
+    )               reduce using rule 35 (OpL -> ~ OpR .)
+    ,               reduce using rule 35 (OpL -> ~ OpR .)
+
+
+state 96
+
+    (36) OpL -> | ( . OpR , OpR )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    OpR                            shift and go to state 117
+
+state 97
+
+    (25) If -> IF ( Cond ) . { Stats }
+    (26) If -> IF ( Cond ) . { Stats } ELSE { Stats }
+
+    {               shift and go to state 118
+
+
+state 98
+
+    (27) While -> WHILE ( Cond ) . { Stats }
+
+    {               shift and go to state 119
+
+
+state 99
+
+    (50) Term -> VAR [ Term . ]
+    (51) Term -> VAR [ Term . ] [ Term ]
+
+    ]               shift and go to state 120
+
+
+state 100
+
+    (53) Scan -> SCAN ( VAR [ NUM . ] )
+    (54) Scan -> SCAN ( VAR [ NUM . ] [ NUM ] )
+
+    ]               shift and go to state 121
+
+
+state 101
+
+    (8) Dcl -> ARRAY ( VAR , NUM ) .
+
+    INT             reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    ARRAY           reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    MATRIZ          reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    PRINTT          reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    PRINTV          reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    SCAN            reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    {               reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+    $end            reduce using rule 8 (Dcl -> ARRAY ( VAR , NUM ) .)
+
+
+state 102
+
+    (9) Dcl -> MATRIZ ( VAR , NUM , . NUM )
+
+    NUM             shift and go to state 122
+
+
+state 103
+
+    (23) Atr -> VAR [ Exp ] [ . Exp ] = Exp
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 123
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 104
+
+    (22) Atr -> VAR [ Exp ] = . Exp
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 124
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 105
+
+    (43) OpA -> + ( Exp . , Exp )
+
+    ,               shift and go to state 125
+
+
+state 106
+
+    (44) OpA -> - ( Exp . , Exp )
+
+    ,               shift and go to state 126
+
+
+state 107
+
+    (45) OpA -> * ( Exp . , Exp )
+
+    ,               shift and go to state 127
+
+
+state 108
+
+    (46) OpA -> / ( Exp . , Exp )
+
+    ,               shift and go to state 128
+
+
+state 109
+
+    (47) OpA -> % ( Exp . , Exp )
+
+    ,               shift and go to state 129
+
+
+state 110
+
+    (37) OpR -> > ( Exp . , Exp )
+
+    ,               shift and go to state 130
+
+
+state 111
+
+    (38) OpR -> MAIORIG ( Exp . , Exp )
+
+    ,               shift and go to state 131
+
+
+state 112
+
+    (39) OpR -> < ( Exp . , Exp )
+
+    ,               shift and go to state 132
+
+
+state 113
+
+    (40) OpR -> MENORIG ( Exp . , Exp )
+
+    ,               shift and go to state 133
+
+
+state 114
+
+    (41) OpR -> IGUALDADE ( Exp . , Exp )
+
+    ,               shift and go to state 134
+
+
+state 115
+
+    (42) OpR -> DIFERENTE ( Exp . , Exp )
+
+    ,               shift and go to state 135
+
+
+state 116
+
+    (34) OpL -> & ( OpR . , OpR )
+
+    ,               shift and go to state 136
+
+
+state 117
+
+    (36) OpL -> | ( OpR . , OpR )
+
+    ,               shift and go to state 137
+
+
+state 118
+
+    (25) If -> IF ( Cond ) { . Stats }
+    (26) If -> IF ( Cond ) { . Stats } ELSE { Stats }
+    (15) Stats -> . Stat
+    (16) Stats -> . Stats Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stats                          shift and go to state 138
+    Stat                           shift and go to state 22
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 119
+
+    (27) While -> WHILE ( Cond ) { . Stats }
+    (15) Stats -> . Stat
+    (16) Stats -> . Stats Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stats                          shift and go to state 139
+    Stat                           shift and go to state 22
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 120
+
+    (50) Term -> VAR [ Term ] .
+    (51) Term -> VAR [ Term ] . [ Term ]
+
+    )               reduce using rule 50 (Term -> VAR [ Term ] .)
+    ]               reduce using rule 50 (Term -> VAR [ Term ] .)
+    }               reduce using rule 50 (Term -> VAR [ Term ] .)
+    VAR             reduce using rule 50 (Term -> VAR [ Term ] .)
+    IF              reduce using rule 50 (Term -> VAR [ Term ] .)
+    WHILE           reduce using rule 50 (Term -> VAR [ Term ] .)
+    SCAN            reduce using rule 50 (Term -> VAR [ Term ] .)
+    PRINTT          reduce using rule 50 (Term -> VAR [ Term ] .)
+    PRINTV          reduce using rule 50 (Term -> VAR [ Term ] .)
+    ,               reduce using rule 50 (Term -> VAR [ Term ] .)
+    [               shift and go to state 140
+
+
+state 121
+
+    (53) Scan -> SCAN ( VAR [ NUM ] . )
+    (54) Scan -> SCAN ( VAR [ NUM ] . [ NUM ] )
+
+    )               shift and go to state 142
+    [               shift and go to state 141
+
+
+state 122
+
+    (9) Dcl -> MATRIZ ( VAR , NUM , NUM . )
+
+    )               shift and go to state 143
+
+
+state 123
+
+    (23) Atr -> VAR [ Exp ] [ Exp . ] = Exp
+
+    ]               shift and go to state 144
+
+
+state 124
+
+    (22) Atr -> VAR [ Exp ] = Exp .
+
+    }               reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+    VAR             reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+    IF              reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+    WHILE           reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+    SCAN            reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+    PRINTT          reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+    PRINTV          reduce using rule 22 (Atr -> VAR [ Exp ] = Exp .)
+
+
+state 125
+
+    (43) OpA -> + ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 145
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 126
+
+    (44) OpA -> - ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 146
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 127
+
+    (45) OpA -> * ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 147
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 128
+
+    (46) OpA -> / ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 148
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 129
+
+    (47) OpA -> % ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 149
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 130
+
+    (37) OpR -> > ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 150
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 131
+
+    (38) OpR -> MAIORIG ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 151
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 132
+
+    (39) OpR -> < ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 152
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 133
+
+    (40) OpR -> MENORIG ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 153
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 134
+
+    (41) OpR -> IGUALDADE ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 154
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 135
+
+    (42) OpR -> DIFERENTE ( Exp , . Exp )
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 155
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 136
+
+    (34) OpL -> & ( OpR , . OpR )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    OpR                            shift and go to state 156
+
+state 137
+
+    (36) OpL -> | ( OpR , . OpR )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+
+    OpR                            shift and go to state 157
+
+state 138
+
+    (25) If -> IF ( Cond ) { Stats . }
+    (26) If -> IF ( Cond ) { Stats . } ELSE { Stats }
+    (16) Stats -> Stats . Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    }               shift and go to state 158
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stat                           shift and go to state 38
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 139
+
+    (27) While -> WHILE ( Cond ) { Stats . }
+    (16) Stats -> Stats . Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    }               shift and go to state 159
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stat                           shift and go to state 38
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 140
+
+    (51) Term -> VAR [ Term ] [ . Term ]
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Term                           shift and go to state 160
+
+state 141
+
+    (54) Scan -> SCAN ( VAR [ NUM ] [ . NUM ] )
+
+    NUM             shift and go to state 161
+
+
+state 142
+
+    (53) Scan -> SCAN ( VAR [ NUM ] ) .
+
+    INT             reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    ARRAY           reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    MATRIZ          reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    PRINTT          reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    PRINTV          reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    SCAN            reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    {               reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    $end            reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    }               reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    VAR             reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    IF              reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+    WHILE           reduce using rule 53 (Scan -> SCAN ( VAR [ NUM ] ) .)
+
+
+state 143
+
+    (9) Dcl -> MATRIZ ( VAR , NUM , NUM ) .
+
+    INT             reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    ARRAY           reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    MATRIZ          reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    PRINTT          reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    PRINTV          reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    SCAN            reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    {               reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+    $end            reduce using rule 9 (Dcl -> MATRIZ ( VAR , NUM , NUM ) .)
+
+
+state 144
+
+    (23) Atr -> VAR [ Exp ] [ Exp ] . = Exp
+
+    =               shift and go to state 162
+
+
+state 145
+
+    (43) OpA -> + ( Exp , Exp . )
+
+    )               shift and go to state 163
+
+
+state 146
+
+    (44) OpA -> - ( Exp , Exp . )
+
+    )               shift and go to state 164
+
+
+state 147
+
+    (45) OpA -> * ( Exp , Exp . )
+
+    )               shift and go to state 165
+
+
+state 148
+
+    (46) OpA -> / ( Exp , Exp . )
+
+    )               shift and go to state 166
+
+
+state 149
+
+    (47) OpA -> % ( Exp , Exp . )
+
+    )               shift and go to state 167
+
+
+state 150
+
+    (37) OpR -> > ( Exp , Exp . )
+
+    )               shift and go to state 168
+
+
+state 151
+
+    (38) OpR -> MAIORIG ( Exp , Exp . )
+
+    )               shift and go to state 169
+
+
+state 152
+
+    (39) OpR -> < ( Exp , Exp . )
+
+    )               shift and go to state 170
+
+
+state 153
+
+    (40) OpR -> MENORIG ( Exp , Exp . )
+
+    )               shift and go to state 171
+
+
+state 154
+
+    (41) OpR -> IGUALDADE ( Exp , Exp . )
+
+    )               shift and go to state 172
+
+
+state 155
+
+    (42) OpR -> DIFERENTE ( Exp , Exp . )
+
+    )               shift and go to state 173
+
+
+state 156
+
+    (34) OpL -> & ( OpR , OpR . )
+
+    )               shift and go to state 174
+
+
+state 157
+
+    (36) OpL -> | ( OpR , OpR . )
+
+    )               shift and go to state 175
+
+
+state 158
+
+    (25) If -> IF ( Cond ) { Stats } .
+    (26) If -> IF ( Cond ) { Stats } . ELSE { Stats }
+
+    }               reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    VAR             reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    IF              reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    WHILE           reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    SCAN            reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    PRINTT          reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    PRINTV          reduce using rule 25 (If -> IF ( Cond ) { Stats } .)
+    ELSE            shift and go to state 176
+
+
+state 159
+
+    (27) While -> WHILE ( Cond ) { Stats } .
+
+    }               reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+    VAR             reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+    IF              reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+    WHILE           reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+    SCAN            reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+    PRINTT          reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+    PRINTV          reduce using rule 27 (While -> WHILE ( Cond ) { Stats } .)
+
+
+state 160
+
+    (51) Term -> VAR [ Term ] [ Term . ]
+
+    ]               shift and go to state 177
+
+
+state 161
+
+    (54) Scan -> SCAN ( VAR [ NUM ] [ NUM . ] )
+
+    ]               shift and go to state 178
+
+
+state 162
+
+    (23) Atr -> VAR [ Exp ] [ Exp ] = . Exp
+    (28) Exp -> . OpA
+    (29) Exp -> . OpR
+    (30) Exp -> . OpL
+    (31) Exp -> . Term
+    (43) OpA -> . + ( Exp , Exp )
+    (44) OpA -> . - ( Exp , Exp )
+    (45) OpA -> . * ( Exp , Exp )
+    (46) OpA -> . / ( Exp , Exp )
+    (47) OpA -> . % ( Exp , Exp )
+    (37) OpR -> . > ( Exp , Exp )
+    (38) OpR -> . MAIORIG ( Exp , Exp )
+    (39) OpR -> . < ( Exp , Exp )
+    (40) OpR -> . MENORIG ( Exp , Exp )
+    (41) OpR -> . IGUALDADE ( Exp , Exp )
+    (42) OpR -> . DIFERENTE ( Exp , Exp )
+    (34) OpL -> . & ( OpR , OpR )
+    (35) OpL -> . ~ OpR
+    (36) OpL -> . | ( OpR , OpR )
+    (48) Term -> . NUM
+    (49) Term -> . VAR
+    (50) Term -> . VAR [ Term ]
+    (51) Term -> . VAR [ Term ] [ Term ]
+
+    +               shift and go to state 56
+    -               shift and go to state 57
+    *               shift and go to state 58
+    /               shift and go to state 59
+    %               shift and go to state 60
+    >               shift and go to state 61
+    MAIORIG         shift and go to state 62
+    <               shift and go to state 63
+    MENORIG         shift and go to state 64
+    IGUALDADE       shift and go to state 65
+    DIFERENTE       shift and go to state 66
+    &               shift and go to state 67
+    ~               shift and go to state 68
+    |               shift and go to state 69
+    NUM             shift and go to state 45
+    VAR             shift and go to state 46
+
+    Exp                            shift and go to state 179
+    OpA                            shift and go to state 52
+    OpR                            shift and go to state 53
+    OpL                            shift and go to state 54
+    Term                           shift and go to state 55
+
+state 163
+
+    (43) OpA -> + ( Exp , Exp ) .
+
+    ]               reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    }               reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    VAR             reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    IF              reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    WHILE           reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    SCAN            reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    PRINTT          reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    PRINTV          reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    ,               reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+    )               reduce using rule 43 (OpA -> + ( Exp , Exp ) .)
+
+
+state 164
+
+    (44) OpA -> - ( Exp , Exp ) .
+
+    ]               reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    }               reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    VAR             reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    IF              reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    WHILE           reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    SCAN            reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    PRINTT          reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    PRINTV          reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    ,               reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+    )               reduce using rule 44 (OpA -> - ( Exp , Exp ) .)
+
+
+state 165
+
+    (45) OpA -> * ( Exp , Exp ) .
+
+    ]               reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    }               reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    VAR             reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    IF              reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    WHILE           reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    SCAN            reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    PRINTT          reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    PRINTV          reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    ,               reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+    )               reduce using rule 45 (OpA -> * ( Exp , Exp ) .)
+
+
+state 166
+
+    (46) OpA -> / ( Exp , Exp ) .
+
+    ]               reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    }               reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    VAR             reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    IF              reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    WHILE           reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    SCAN            reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    PRINTT          reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    PRINTV          reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    ,               reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+    )               reduce using rule 46 (OpA -> / ( Exp , Exp ) .)
+
+
+state 167
+
+    (47) OpA -> % ( Exp , Exp ) .
+
+    ]               reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    }               reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    VAR             reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    IF              reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    WHILE           reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    SCAN            reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    PRINTT          reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    PRINTV          reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    ,               reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+    )               reduce using rule 47 (OpA -> % ( Exp , Exp ) .)
+
+
+state 168
+
+    (37) OpR -> > ( Exp , Exp ) .
+
+    ]               reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    }               reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    VAR             reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    IF              reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    WHILE           reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    SCAN            reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    PRINTT          reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    PRINTV          reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    )               reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+    ,               reduce using rule 37 (OpR -> > ( Exp , Exp ) .)
+
+
+state 169
+
+    (38) OpR -> MAIORIG ( Exp , Exp ) .
+
+    ]               reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    }               reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    VAR             reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    IF              reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    WHILE           reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    SCAN            reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    PRINTT          reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    PRINTV          reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    )               reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+    ,               reduce using rule 38 (OpR -> MAIORIG ( Exp , Exp ) .)
+
+
+state 170
+
+    (39) OpR -> < ( Exp , Exp ) .
+
+    ]               reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    }               reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    VAR             reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    IF              reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    WHILE           reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    SCAN            reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    PRINTT          reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    PRINTV          reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    )               reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+    ,               reduce using rule 39 (OpR -> < ( Exp , Exp ) .)
+
+
+state 171
+
+    (40) OpR -> MENORIG ( Exp , Exp ) .
+
+    ]               reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    }               reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    VAR             reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    IF              reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    WHILE           reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    SCAN            reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    PRINTT          reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    PRINTV          reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    )               reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+    ,               reduce using rule 40 (OpR -> MENORIG ( Exp , Exp ) .)
+
+
+state 172
+
+    (41) OpR -> IGUALDADE ( Exp , Exp ) .
+
+    ]               reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    }               reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    VAR             reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    IF              reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    WHILE           reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    SCAN            reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    PRINTT          reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    PRINTV          reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    )               reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+    ,               reduce using rule 41 (OpR -> IGUALDADE ( Exp , Exp ) .)
+
+
+state 173
+
+    (42) OpR -> DIFERENTE ( Exp , Exp ) .
+
+    ]               reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    }               reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    VAR             reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    IF              reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    WHILE           reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    SCAN            reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    PRINTT          reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    PRINTV          reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    )               reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+    ,               reduce using rule 42 (OpR -> DIFERENTE ( Exp , Exp ) .)
+
+
+state 174
+
+    (34) OpL -> & ( OpR , OpR ) .
+
+    ]               reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    }               reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    VAR             reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    IF              reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    WHILE           reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    SCAN            reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    PRINTT          reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    PRINTV          reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    )               reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+    ,               reduce using rule 34 (OpL -> & ( OpR , OpR ) .)
+
+
+state 175
+
+    (36) OpL -> | ( OpR , OpR ) .
+
+    ]               reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    }               reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    VAR             reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    IF              reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    WHILE           reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    SCAN            reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    PRINTT          reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    PRINTV          reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    )               reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+    ,               reduce using rule 36 (OpL -> | ( OpR , OpR ) .)
+
+
+state 176
+
+    (26) If -> IF ( Cond ) { Stats } ELSE . { Stats }
+
+    {               shift and go to state 180
+
+
+state 177
+
+    (51) Term -> VAR [ Term ] [ Term ] .
+
+    )               reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    ]               reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    }               reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    VAR             reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    IF              reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    WHILE           reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    SCAN            reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    PRINTT          reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    PRINTV          reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+    ,               reduce using rule 51 (Term -> VAR [ Term ] [ Term ] .)
+
+
+state 178
+
+    (54) Scan -> SCAN ( VAR [ NUM ] [ NUM ] . )
+
+    )               shift and go to state 181
+
+
+state 179
+
+    (23) Atr -> VAR [ Exp ] [ Exp ] = Exp .
+
+    }               reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+    VAR             reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+    IF              reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+    WHILE           reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+    SCAN            reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+    PRINTT          reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+    PRINTV          reduce using rule 23 (Atr -> VAR [ Exp ] [ Exp ] = Exp .)
+
+
+state 180
+
+    (26) If -> IF ( Cond ) { Stats } ELSE { . Stats }
+    (15) Stats -> . Stat
+    (16) Stats -> . Stats Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stats                          shift and go to state 182
+    Stat                           shift and go to state 22
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 181
+
+    (54) Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .
+
+    INT             reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    ARRAY           reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    MATRIZ          reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    PRINTT          reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    PRINTV          reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    SCAN            reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    {               reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    $end            reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    }               reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    VAR             reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    IF              reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+    WHILE           reduce using rule 54 (Scan -> SCAN ( VAR [ NUM ] [ NUM ] ) .)
+
+
+state 182
+
+    (26) If -> IF ( Cond ) { Stats } ELSE { Stats . }
+    (16) Stats -> Stats . Stat
+    (17) Stat -> . Atr
+    (18) Stat -> . If
+    (19) Stat -> . While
+    (20) Stat -> . Scan
+    (21) Stat -> . Print
+    (22) Atr -> . VAR [ Exp ] = Exp
+    (23) Atr -> . VAR [ Exp ] [ Exp ] = Exp
+    (24) Atr -> . VAR = Exp
+    (25) If -> . IF ( Cond ) { Stats }
+    (26) If -> . IF ( Cond ) { Stats } ELSE { Stats }
+    (27) While -> . WHILE ( Cond ) { Stats }
+    (52) Scan -> . SCAN ( VAR )
+    (53) Scan -> . SCAN ( VAR [ NUM ] )
+    (54) Scan -> . SCAN ( VAR [ NUM ] [ NUM ] )
+    (55) Print -> . PRINTT ( TEXTO )
+    (56) Print -> . PRINTV ( Term )
+
+    }               shift and go to state 183
+    VAR             shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    SCAN            shift and go to state 14
+    PRINTT          shift and go to state 12
+    PRINTV          shift and go to state 13
+
+    Stat                           shift and go to state 38
+    Atr                            shift and go to state 23
+    If                             shift and go to state 24
+    While                          shift and go to state 25
+    Scan                           shift and go to state 26
+    Print                          shift and go to state 27
+
+state 183
+
+    (26) If -> IF ( Cond ) { Stats } ELSE { Stats } .
+
+    }               reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+    VAR             reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+    IF              reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+    WHILE           reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+    SCAN            reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+    PRINTT          reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+    PRINTV          reduce using rule 26 (If -> IF ( Cond ) { Stats } ELSE { Stats } .)
+

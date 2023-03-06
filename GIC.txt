@@ -1,0 +1,86 @@
+Prog     : Dcls
+         | Corpo  
+         | Dcls Corpo
+
+Dcls     : Dcl 
+         | Dcl Dcls 
+
+Dcl      : INT VAR
+         | INT VAR '=' NUM
+         | ARRAY '(' VAR ',' NUM ')'
+         | MATRIZ '(' VAR ',' NUM ',' NUM ')'
+         | Print
+         | Scan 
+
+Corpo    : Prox
+         | Prox Corpo 
+
+Prox     : '{' Stats '}'     
+
+Stats : Stat
+      | Stats Stat 
+
+Stat : Atr 
+     | If        
+     | While     
+     | Scan      
+     | Print     
+
+Atr : VAR '=' Exp
+    | VAR '[' Exp ']' '=' Exp
+    | VAR '[' Exp ']' '[' Exp ']' '=' Exp 
+
+If : IF '(' Cond ')' '{' Stats '}'                                         
+   | IF '(' Cond ')' '{' Stats '}' ELSE '{' Stats '}'
+
+While : WHILE '(' Cond ')' '{' Stats '}'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+Exp : OpA                                                                                                                                                                                                  
+    | OpR                                                                                                                                                                                                           
+    | OpL                                                                                                                                                                                                                    
+    | Term                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                           
+Cond : OpL
+     | OpR    
+
+OpL : '&' '(' OpR ',' OpR ')'        
+    | '~' OpR                            
+    | '|' '(' OpR ',' OpR ')'
+
+OpR : '>' '(' Exp ',' Exp ')'       
+    | MAIORIG '(' Exp ',' Exp ')'   
+    | '<' '(' Exp ',' Exp ')'       
+    | MENORIG '(' Exp ',' Exp ')'   
+    | IGUALDADE '(' Exp ',' Exp ')' 
+    | DIFERENTE '(' Exp ',' Exp ')' 
+
+OpA : '+' '(' Exp ',' Exp ')' 
+    | '-' '(' Exp ',' Exp ')'
+    | '*' '(' Exp ',' Exp ')'
+    | '/' '(' Exp ',' Exp ')'
+    | '%' '(' Exp ',' Exp ')' 
+
+Term : NUM
+     | VAR
+     | VAR '[' Term ']'  
+     | VAR '[' Term ']' '[' Term ']'   
+
+Scan : SCAN '(' VAR ')'
+     | SCAN '(' VAR '[' NUM '] ')'  
+     | SCAN '(' VAR '[' NUM '] '[' NUM ']' ')'    
+
+
+Print : PRINTT '(' TEXTO ')'  
+      | PRINTV '(' Term  ')'       
+          
+
+
+
+
+
+
+
+
+
+
+
